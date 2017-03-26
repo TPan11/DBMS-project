@@ -1,0 +1,45 @@
+insert into PEOPLE(PID, DOB, Address, Gender, First_Name, Last_Name,Password) 
+values('sgarg7','12-Jun-1996','2713-2 Brigadoon Drive', 'M', 'Shaurya', 'Garg', '1234');
+
+insert into PEOPLE(PID, DOB, Address, Gender, First_Name, Last_Name,Password) 
+values('zsthampi','19-Oct-1946','2713-2 Brigadoon Drive', 'M', 'Zubin', 'Thampi', '1234');
+
+insert into People_Health_Supporters(PID, HID, IS_PRIMARY, AUTHORIZATION_DATE)
+values('sgarg7','zsthampi','Y','20-Sep-2016');
+
+insert into DISEASE(D_Name,Description)
+values('Alice in WonderLand Syndrome','Objects seem larger or smaller than usual');
+
+insert into RECOMMENDATION(Recommendation_Name,Description,Is_General)
+values('Check Vision','Check optical vision for short and long sight','N');
+
+insert into Diagnosed_With(PID,D_Name,DIAGNOSED_DATE,IS_ACTIVE)
+values('sgarg7','Alice in WonderLand Syndrome','21-Sep-2016','Y');
+
+insert into Measure(MEASURE_NAME,UNIT,UPPER_LIMIT,LOWER_LIMIT,FREQUENCY,DATA_TYPE,NUMBER_OF_OBSERVATIONS,THRESHOLD)
+values('Vision', 'Meter', 60,20,1,'Number',10,6);
+
+insert into LIST_OF_VALUE(LOV_NAME, MEASURE_NAME, LOV_VALUE, DESCRIPTION)
+values('Bad','Vision',0,'Cannot see clearly');
+insert into LIST_OF_VALUE(LOV_NAME, MEASURE_NAME, LOV_VALUE, DESCRIPTION)
+values('Fair','Vision',1,'Can see well enough');
+insert into LIST_OF_VALUE(LOV_NAME, MEASURE_NAME, LOV_VALUE, DESCRIPTION)
+values('Good','Vision',2,'Can see clearly');
+insert into LIST_OF_VALUE(LOV_NAME, MEASURE_NAME, LOV_VALUE, DESCRIPTION)
+values('Very good','Vision',3,'Cannot see perfectly');
+
+insert into RECOMMENDATION_MEASURE(RECOMMENDATION_NAME, MEASURE_NAME)
+values('Check Vision','Vision');
+
+insert into DISEASE_SPECIFIC_RECO(RECOMMENDATION_NAME, MEASURE_NAME, D_NAME, UPPER_LIMIT, LOWER_LIMIT,FREQUENCY,NUMBER_OF_OBSERVATIONS,THRESHOLD)
+values('Check Vision','Vision','Alice in WonderLand Syndrome',60,20,1,10,6);
+
+insert into PEOPLE_SPECIFIC_RECO(RECOMMENDATION_NAME, MEASURE_NAME, PID, UPPER_LIMIT, LOWER_LIMIT,FREQUENCY,NUMBER_OF_OBSERVATIONS,THRESHOLD)
+values('Check Vision','Vision','sgarg7',60,20,1,10,6);
+
+insert into RECORD(PID, RECOMMENDATION_NAME, MEASURE_NAME, VALUE, RECORDED_DATE, CREATED_DATE, CREATED_BY)
+VALUES('sgarg7', 'Check Vision','Vision',0,'21-Sep-2016','22-Sep-2016','zsthampi');
+
+insert into Alert(PID, TYPE, RECOMMENDATION_NAME, MEASURE_NAME, IS_ACTIVE, IS_VIEWED, CLEARED_DATE, CLEARED_BY, RECORD_ID)
+values('sgarg7','Outside Limit','Check Vision', 'Vision', 'Y', 'N', '22-Sep-2016', '22-Sep-2016', 1);
+

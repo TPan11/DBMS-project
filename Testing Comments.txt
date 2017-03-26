@@ -1,0 +1,2 @@
+Trigger for health supporter cannot be deleted instead of message showing the result!
+Trigger to verify that if lov exists then value should be a valid value from lov.
